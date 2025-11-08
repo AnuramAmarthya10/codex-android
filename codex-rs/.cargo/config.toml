@@ -3,3 +3,18 @@ rustflags = ["-C", "link-arg=/STACK:8388608"]
 
 [target.'cfg(all(windows, target_env = "gnu"))']
 rustflags = ["-C", "link-arg=-Wl,--stack,8388608"]
+
+[target.aarch64-linux-android]
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+
+[env]
+OPENSSL_STATIC = "1"
+OPENSSL_NO_VENDOR = "0"
+
+[build]
+# Force vendored OpenSSL for crates that depend on it
+rustc-env = { OPENSSL_STATIC = "1" }
+
+[patch.crates-io]
+openssl = { version = "0.10", features = ["vendored"] }
+
