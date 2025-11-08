@@ -10,11 +10,6 @@ rustflags = ["-C", "link-arg=-fuse-ld=lld"]
 [env]
 OPENSSL_STATIC = "1"
 OPENSSL_NO_VENDOR = "0"
-
-[build]
-# Force vendored OpenSSL for crates that depend on it
-rustc-env = { OPENSSL_STATIC = "1" }
-
-[patch.crates-io]
-openssl = { version = "0.10", features = ["vendored"] }
-
+OPENSSL_LIB_DIR = ""
+OPENSSL_INCLUDE_DIR = ""
+OPENSSL_DIR = ""
