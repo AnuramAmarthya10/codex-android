@@ -41,5 +41,8 @@ jobs:
           echo "=== Installing Android target ==="
           rustup target add aarch64-linux-android
 
+          echo "===Crates depending on openssl==="
+          cargo tree -i openssl --target aarch64-linux-android
+
           echo "=== Building for Android ==="
           cargo build --target aarch64-linux-android --release 
