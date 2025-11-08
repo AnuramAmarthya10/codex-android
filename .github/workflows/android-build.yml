@@ -48,4 +48,4 @@ jobs:
           cargo install cargo-ndk
 
           echo "=== Building for Android ==="
-          cargo ndk build --target aarch64-linux-android --release --build-type release --verbose
+          cargo ndk build --target aarch64-linux-android --release --verbose
