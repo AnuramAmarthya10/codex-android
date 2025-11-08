@@ -31,9 +31,17 @@ jobs:
           else
             echo "ANDROID_NDK_HOME not set or invalid"
           fi
+          
+          echo "=== Setting environment for vendored OpenSSL ==="
+          export OPENSSL_STATIC=1
+          export OPENSSL_NO_VENDOR=0
+          export CARGO_NET_GIT_FETCH_WITH_CLI=true
+
+          echo "=== Installing Android target ==="
+          rustup target add aarch64-linux-android
 
           echo "=== Installing Android target ==="
           rustup target add aarch64-linux-android
 
           echo "=== Building for Android ==="
-          cargo build --target aarch64-linux-android --release
+          cargo build --target aarch64-linux-android --release --features vendored
