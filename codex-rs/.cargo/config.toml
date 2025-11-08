@@ -10,6 +10,4 @@ rustflags = ["-C", "link-arg=-fuse-ld=lld"]
 [env]
 OPENSSL_STATIC = "1"
 OPENSSL_NO_VENDOR = "0"
-OPENSSL_LIB_DIR = ""
-OPENSSL_INCLUDE_DIR = ""
-OPENSSL_DIR = ""
+CARGO_NET_GIT_FETCH_WITH_CLI = "true"
