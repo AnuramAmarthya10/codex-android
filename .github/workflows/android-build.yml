@@ -44,5 +44,8 @@ jobs:
           echo "===Crates depending on openssl==="
           cargo tree -i openssl --target aarch64-linux-android
 
+          echo "===Installing cargo-ndk==="
+          cargo install cargo-ndk
+
           echo "=== Building for Android ==="
-          cargo build --target aarch64-linux-android --release 
+          cargo ndk build --target aarch64-linux-android --release --build-type release --verbose
