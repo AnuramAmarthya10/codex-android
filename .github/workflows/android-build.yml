@@ -1,0 +1,37 @@
+name: Android Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Verify environment and build
+        run: |
+          echo "=== Checking environment ==="
+          which rustup || echo "rustup not found"
+          rustup --version || echo "rustup not working"
+          which rustc || echo "rustc not found"
+          rustc --version || echo "rustc not working"
+          which cargo || echo "cargo not found"
+          cargo --version || echo "cargo not working"
+
+          echo "=== Checking NDK ==="
+          if [ -d "$ANDROID_NDK_HOME" ]; then
+            echo "NDK found at $ANDROID_NDK_HOME"
+          else
+            echo "ANDROID_NDK_HOME not set or invalid"
+          fi
+
+          echo "=== Installing Android target ==="
+          rustup target add aarch64-linux-android
+
+          echo "=== Building for Android ==="
+          cargo build --target aarch64-linux-android --release
