@@ -2,8 +2,6 @@ name: Android Build
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
   build-android:
@@ -44,4 +42,4 @@ jobs:
           rustup target add aarch64-linux-android
 
           echo "=== Building for Android ==="
-          cargo build --target aarch64-linux-android --release --features vendored
+          cargo build --target aarch64-linux-android --release 
