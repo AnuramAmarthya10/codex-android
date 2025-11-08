@@ -10,6 +10,7 @@
   </p>
 
 ---
+> This is a fork of [openai/codex](https://github.com/openai/codex), aiming to cross compile to android for usage in [termux app](https://github.com/>termux/termux-app)
 
 ## Quickstart
 
