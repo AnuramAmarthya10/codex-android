@@ -15,6 +15,8 @@ jobs:
 
       - name: Verify environment and build
         run: |
+          echo "Changing to codex-rs directory"
+          cd codex-rs
           echo "=== Checking environment ==="
           which rustup || echo "rustup not found"
           rustup --version || echo "rustup not working"
